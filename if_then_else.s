@@ -3,8 +3,7 @@
 	 ENTRY 
 __main  FUNCTION		         
         MOV R2,#0x100 ; 
-        MOV R7,#0x100 ; 
-        MOV R4,#0x05 ; 
+        MOV R7,#0x100 ;  
 	CMP R2,R7 ; 
 	ITTE NE    ; 
 	SUBNE R2,R2,R7 ;
