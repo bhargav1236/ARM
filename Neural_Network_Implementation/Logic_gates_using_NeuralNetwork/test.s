@@ -13,7 +13,7 @@ __main  FUNCTION
 		;R2------>	INPUT3
 		;R3------>	Selects logic gate
 		
-		;load R3 with below values to get respctive logic gate thrith table
+		;load R3 with below values to get respctive logic gate truth table
 		;0------->	OR GATE
 		;1------->	AND GATE
 		;2------->	NOT GATE

@@ -7,12 +7,12 @@
      ENTRY 
 sigmoid	FUNCTION
 	   PUSH		{R5-R7,LR};
-       VMOV.F32		S21,R0 ;Provide x to calculate ln(1+x) 
+       VMOV.F32		S21,R0 ;Provide x to calculate 1+e^-x 
 	   VCVT.F32.S32	S20,S21
 	   LDR		R3, = 10000 ; loop variable
 	   VMOV.F32		S1,S20 ;Copying x to S1
 	   VNEG.F32		S2,S20 ;Copying -x to S2
-	   VLDR.F32		S5,=2 ;The Value of ln(1+x) after each iterarion is stored in S5
+	   VLDR.F32		S5,=2 ;The Value of 1+e^-x after each iterarion is stored in S5
 	   VLDR.F32		S19, = 1;
 	   VLDR.F32		S18, = 1;
 	   VLDR.F32		S16, = 0.0625;
@@ -32,8 +32,8 @@ LOOP 	VDIV.F32		S4,S2,S18 ;
 	   CMP			R3,#0	;compare if maimum iteration is reached 
 	   BNE 			LOOP	;Goto Next iteration if maximum iteration is not reached
 final	VDIV.F32		S5,S19,S5 ; Computing [1/(1+e^-x)]
-		VCVTR.U32.F32	S5,S5
-		VMOV			R0, D2[1];
+		VCVTR.U32.F32	S5,S5   ;Converting Floating point Number to Integer by Rounding to nearest Integer
+		VMOV			R0, D2[1]; storing Rounded Integer value to R0 
 		BL 		printMsg;
 		POP		{R5-R7,LR};
 		BX		LR
