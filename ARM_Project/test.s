@@ -32,7 +32,7 @@ next		ADD				R7,#1
 			VMOV			R0,S9
 			VSTR.F32		S9,[R12]
 			ADD				R12,#4
-			BL				printMsg	
+			;BL				printMsg	
 			VLDR.F32		S9,=0
 			ADD				R5,#1
 			CMP				R5,#8

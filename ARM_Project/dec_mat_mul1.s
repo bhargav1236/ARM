@@ -1,5 +1,5 @@
     AREA     factorial, CODE, READONLY
-     EXPORT mat_mul
+     EXPORT dec_mat_mul1
      IMPORT printMsg
 	 IMPORT printMsg2p
 ;	 IMPORT printMsg3p
@@ -10,7 +10,7 @@
 	 IMPORT  sample_size
 
      ENTRY 
-mat_mul  FUNCTION	
+dec_mat_mul1  FUNCTION	
 	
 	PUSH 	{R5-R11,LR}	;
 	
@@ -40,8 +40,8 @@ i_loop		MOV 		R4,#0	; loop variable j=0
 j_loop		MOV 		R5,#0	; loop varaible k=0
 			VMOV.F32	S10,R5	; c[j][i]=0
 k_loop		MOV 		R9,R0		; a_base_address
-			MLA			R9,R4,R6,R9 ; a_base_address+j*4
-			MLA			R9,R5,R7,R9 ; a_base_address+j*4+k*32
+			MLA			R9,R4,R7,R9 ; a_base_address+j*32
+			MLA			R9,R5,R6,R9 ; a_base_address+j*32+k*4
 			LDR			R10,[R9]	; load data present in above address in R10
 			VMOV.F32	S11,R10		; load data into floating point register
 			MOV 		R9,R1		; b_base_address
