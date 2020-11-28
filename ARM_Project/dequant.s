@@ -35,6 +35,7 @@ j_loop		MOV 		R9,R0		; a_base_address
 			MLA			R9,R3,R8,R9 ; a_base_address+j*4+i*32*4
 			LDR			R10,[R9]	; load data present in above address in R10
 			VMOV.F32	S10,R10		; load data into floating point register
+			VCVT.F32.S32	S10,S10
 			
 			LDR			R9,=quant_mat
 			MLA			R9,R4,R6,R9	;quant_mat_base_address+j*4
@@ -45,12 +46,13 @@ j_loop		MOV 		R9,R0		; a_base_address
 			MOV			R9,R0		; c_base_address		
 			MLA			R9,R4,R6,R9 ; c_base_address+j*4
 			MLA			R9,R3,R8,R9 ; c_base_address+j*4+i*32*4
-	;		VCVTR.S32.F32		S10,S10
+;			VCVTR.S32.F32		S10,S10
 			VMOV.F32	R10,S10
 			STR			R10,[R9]	; store data present in R10 to address in R9
 ;			PUSH		{R0-R3}
 ;			MOV			R0,R9
-;			MOV			R1,R10
+;			VCVTR.S32.F32		S10,S10
+;			VMOV.F32			R1,S10
 ;			BL			printMsg2p
 ;			POP			{R0-R3}
 			ADD			R4,#1

@@ -63,7 +63,8 @@ k_loop		MOV 		R9,R0		; a_base_address
 			MOV			R9,R2		; c_base_address		
 			MLA			R9,R4,R6,R9 ; c_base_address+j*4
 			MLA			R9,R3,R8,R9 ; c_base_address+j*4+i*32*4
-;			VCVTR.S32.F32		S10,S10
+			VCVTR.S32.F32		S10,S10
+;			VCVT.F32.S32		S10,S10
 			VMOV.F32	R10,S10
 			STR			R10,[R9]	; store data present in R10 to address in R9
 ;			PUSH		{R0-R3}

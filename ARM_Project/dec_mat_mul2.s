@@ -60,11 +60,11 @@ k_loop		MOV 		R9,R0		; a_base_address
 			VCVTR.S32.F32		S10,S10
 			VMOV.F32	R10,S10
 			STR			R10,[R9]	; store data present in R10 to address in R9
-			PUSH		{R0-R3}
-			MOV			R0,R9
-			MOV			R1,R10
-			BL			printMsg2p
-			POP			{R0-R3}
+;			PUSH		{R0-R3}
+;			MOV			R0,R9
+;			MOV			R1,R10
+;			BL			printMsg2p
+;			POP			{R0-R3}
 			ADD			R4,#1
 			CMP			R4,#8
 			BNE			j_loop

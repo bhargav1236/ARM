@@ -68,7 +68,7 @@ blk2_j_block_inc	MOV		R1,R5	;idct8by8_base address
 	BNE		blk2_i_block_inc
 
 	POP 	{LR}
-
+	BX		LR
 
 
 	
